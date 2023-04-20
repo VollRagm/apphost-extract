@@ -14,7 +14,7 @@ namespace apphost_extract_v2.Models
         private const string HEADER_OFFSET_MASK = "x????xxx????xxx";
 
         private const int HEADER_SIZE = 0xD;
-        private const int FILE_ENTRY_SIZE = 0x12;
+        private const int FILE_ENTRY_SIZE = 0x1A;
 
         public ApphostFile6(FileStream fs, PEHeaders peheader) : base(fs, peheader)
         {
@@ -55,7 +55,7 @@ namespace apphost_extract_v2.Models
         private uint FindHeaderOffset()
         {
             var textSegment = PEHeader.GetSegment(".text");
-            Log.Info("Scanning for the .NET 5 Bundle header...");
+            Log.Info("Scanning for the .NET 6 Bundle header...");
             var sw = Stopwatch.StartNew();
 
             var sigscanResults = PatternScan(FileStream,
@@ -79,7 +79,7 @@ namespace apphost_extract_v2.Models
         private AppHostManifest ParseManifest()
         {
             //Seek over random bullshit that got added in .NET 5
-            FileStream.Seek(0x28, SeekOrigin.Current);
+            FileStream.Seek(0x3C, SeekOrigin.Current);
 
             AppHostManifest manifest = new AppHostManifest();
             var embeddedFileCount = BitConverter.ToInt32(Header.Raw, 0x8);
@@ -102,7 +102,7 @@ namespace apphost_extract_v2.Models
             //hopefully nobody embeds a file larger than 2GB :D
             entry.Size = (int)BitConverter.ToInt64(entry.Raw, 0x8);
 
-            byte[] stringBuffer = new byte[entry.Raw[0x11]];
+            byte[] stringBuffer = new byte[entry.Raw[0x19]];
             FileStream.Read(stringBuffer, 0, stringBuffer.Length);
             entry.Name = Encoding.UTF8.GetString(stringBuffer);
 

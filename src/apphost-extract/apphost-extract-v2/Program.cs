@@ -14,7 +14,7 @@ namespace apphost_extract_v2
 
             FileChecker.Load();
 
-            var fileInfo = GetFileInfo(new string[] { "C:\\Users\\vr\\Documents\\UC\\GLCheat.exe" });
+            var fileInfo = GetFileInfo(args);
 
             var apphostAnalyzer = new Analyzer(fileInfo);
             var apphost = apphostAnalyzer.Open();

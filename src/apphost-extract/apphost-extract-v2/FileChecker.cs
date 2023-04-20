@@ -17,7 +17,7 @@ namespace apphost_extract_v2
 
         public static void Load()
         {
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), HASHFILE);
+            var path = Path.Combine(Path.GetDirectoryName(System.AppContext.BaseDirectory), HASHFILE);
             if (File.Exists(path))
                 Hashes = File.ReadAllLines(path);
             else

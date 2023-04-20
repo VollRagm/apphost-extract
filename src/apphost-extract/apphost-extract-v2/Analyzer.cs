@@ -76,7 +76,7 @@ namespace apphost_extract_v2
                 case "5":
                     return new ApphostFile5(File, PEHeader, headerOffset);
                 case "6":
-                    return new ApphostFile5(File, PEHeader);
+                    return new ApphostFile6(File, PEHeader, headerOffset);
                 default:
                     return null;
             }
