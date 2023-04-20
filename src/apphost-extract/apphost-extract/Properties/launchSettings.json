@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "apphost-extract": {
+      "commandName": "Project",
+      "commandLineArgs": "AmongUsUnlocker.exe"
+    }
+  }
+}

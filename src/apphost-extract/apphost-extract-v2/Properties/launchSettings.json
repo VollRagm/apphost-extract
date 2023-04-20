@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "apphost-extract-v2": {
+      "commandName": "Project"
+    }
+  }
+}
