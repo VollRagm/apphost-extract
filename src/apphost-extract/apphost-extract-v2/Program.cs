@@ -14,7 +14,7 @@ namespace apphost_extract_v2
 
             FileChecker.Load();
 
-            var fileInfo = GetFileInfo(args);
+            var fileInfo = GetFileInfo(new string[] { "C:\\Users\\vr\\Documents\\UC\\GLCheat.exe" });
 
             var apphostAnalyzer = new Analyzer(fileInfo);
             var apphost = apphostAnalyzer.Open();
@@ -22,7 +22,7 @@ namespace apphost_extract_v2
             if (apphost == null)
             {
                 Log.Error("Unable to determine apphost version automatically.");
-                var version = Log.QueryString("Please enter the apphost version, you can find it in the entry point of the app (3.0, 3.1, 5): ");
+                var version = Log.QueryString("Please enter the apphost version, you can find it in the entry point of the app (3.0, 3.1, 5, 6.0): ");
                 var headerOffset = uint.Parse(Log.QueryString("Please enter the Header offset \n(parse pdb, search for header_offset in names or\n use string reference 'Bundle Header Offset: [%lx]', find the .data ptr and enter its value): ").Replace("0x", ""), System.Globalization.NumberStyles.HexNumber);
                 
                 apphostAnalyzer = new Analyzer(fileInfo);
