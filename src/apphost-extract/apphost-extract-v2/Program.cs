@@ -44,7 +44,7 @@ namespace apphost_extract_v2
         {
             try
             {
-                var fileName = new FileInfo(Assembly.GetExecutingAssembly().Location).Name;
+                var fileName = new FileInfo(System.AppContext.BaseDirectory).Name;
 
                 if (args.Length > 0)
                 {
