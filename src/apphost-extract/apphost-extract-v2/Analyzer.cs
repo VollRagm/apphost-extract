@@ -59,7 +59,9 @@ namespace apphost_extract_v2
                 case "5.0":
                     return new ApphostFile5(File, PEHeader);
                 case "6.0":
-                    return new ApphostFile5(File, PEHeader);
+                    return new ApphostFile6(File, PEHeader);
+                case "7.0":
+                    return new ApphostFile7(File, PEHeader);
                 default:
                     return null;
             }
@@ -73,10 +75,12 @@ namespace apphost_extract_v2
                     return new ApphostFile30(File, PEHeader, headerOffset);
                 case "3.1":
                     return new ApphostFile31(File, PEHeader, headerOffset);
-                case "5":
+                case "5.0":
                     return new ApphostFile5(File, PEHeader, headerOffset);
-                case "6":
+                case "6.0":
                     return new ApphostFile6(File, PEHeader, headerOffset);
+                case "7.0":
+                    return new ApphostFile7(File, PEHeader, headerOffset);
                 default:
                     return null;
             }
