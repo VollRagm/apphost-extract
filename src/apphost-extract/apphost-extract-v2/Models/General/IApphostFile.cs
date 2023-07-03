@@ -29,7 +29,13 @@ namespace apphost_extract_v2.General
                 try
                 {
                     var bytes = FileStream.ReadBuffer(fileEntry.Offset, fileEntry.Size);
-                    var name = fileEntry.Name;
+                    var name = Path.GetFileName(fileEntry.Name);
+                    var path = Path.GetDirectoryName(fileEntry.Name);
+                    if (path.Length > 0)
+                    {
+                        Directory.CreateDirectory(Path.Combine(outputDir, path));
+                    }
+
                     if (FileChecker.IsKnownFile(bytes))
                     {
                         Log.Info($"Extracting {name} --> Known file", ConsoleColor.Green);
@@ -40,7 +46,7 @@ namespace apphost_extract_v2.General
                         name = name.Insert(0, "_");
                     }
 
-                    var filePath = Path.Combine(outputDir, name);
+                    var filePath = Path.Combine(outputDir, path, name);
                     File.WriteAllBytes(filePath, bytes);
                 }
                 catch (Exception ex)
