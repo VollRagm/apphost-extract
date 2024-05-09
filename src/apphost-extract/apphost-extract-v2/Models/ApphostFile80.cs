@@ -10,8 +10,8 @@ namespace apphost_extract_v2.Models
 {
     public class ApphostFile80 : IApphostFile
     {
-        private readonly byte[] HEADER_OFFSET_SIG = { 0x4C, 0x8B, 0x3D, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8D, 0x55 };
-        private const string HEADER_OFFSET_MASK = "xxx????xxx";
+        private readonly byte[] HEADER_OFFSET_SIG = { 0x48, 0x8D, 0x15, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8D, 0x4C, 0x24, 0x28 };
+        private const string HEADER_OFFSET_MASK = "xxx????xxxxx";
 
         private const int HEADER_SIZE = 0xD;
         private const int FILE_ENTRY_SIZE = 0x1A;
