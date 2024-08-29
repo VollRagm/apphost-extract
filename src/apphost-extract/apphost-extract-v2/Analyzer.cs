@@ -62,6 +62,8 @@ namespace apphost_extract_v2
                     return new ApphostFile6(File, PEHeader);
                 case "7.0":
                     return new ApphostFile7(File, PEHeader);
+                case "8.0":
+                    return new ApphostFile80(File, PEHeader);
                 default:
                     return null;
             }
@@ -81,6 +83,8 @@ namespace apphost_extract_v2
                     return new ApphostFile6(File, PEHeader, headerOffset);
                 case "7.0":
                     return new ApphostFile7(File, PEHeader, headerOffset);
+                case "8.0":
+                    return new ApphostFile80(File, PEHeader, headerOffset);
                 default:
                     return null;
             }
