@@ -88,5 +88,10 @@ namespace apphost_extract_v2
 
             return new SectionHeader();
         }
+
+        public static void DumpToFile(byte[] data, string path)
+        {
+            File.WriteAllBytes(path, data);
+        }
     }
 }
